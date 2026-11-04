@@ -81,6 +81,11 @@ public class LocalLoginTest {
         if (chromeBinary != null && !chromeBinary.isBlank()) {
             options.setBinary(chromeBinary);
         }
+        String chromeDriver = System.getenv("CHROMEDRIVER_BIN");
+
+        if (chromeDriver != null && !chromeDriver.isBlank()) {
+            System.setProperty("webdriver.chrome.driver", chromeDriver);
+        }
 
         // Enable headless mode when running in GitHub Actions
         if (Boolean.getBoolean("headless")) {
