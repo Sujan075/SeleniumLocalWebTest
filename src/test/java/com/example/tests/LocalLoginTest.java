@@ -76,6 +76,11 @@ public class LocalLoginTest {
     public void setUp() {
 
         ChromeOptions options = new ChromeOptions();
+        String chromeBinary = System.getenv("CHROME_BIN");
+
+        if (chromeBinary != null && !chromeBinary.isBlank()) {
+            options.setBinary(chromeBinary);
+        }
 
         // Enable headless mode when running in GitHub Actions
         if (Boolean.getBoolean("headless")) {
