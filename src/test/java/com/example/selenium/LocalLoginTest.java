@@ -25,6 +25,12 @@ public class LocalLoginTest {
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+        
+        String chromeBinary = System.getenv("CHROME_BIN");
+
+        if (chromeBinary != null && !chromeBinary.isBlank()) {
+            options.setBinary(chromeBinary);
+        }
 
         driver = new ChromeDriver(options);
 
